@@ -15,8 +15,8 @@ set_floating_scratch_term_binding() {
 			tmux bind-key "$key" "if-shell -F '#{==:#S,floating}' { 
 				detach-client 
 			} {
-			set -gF '@last_session_name' '#S'
-			setenv -F FLOATING_SESSION_NAME 'floating'
+			set -gF '@last_session_name' '#S' ;
+			setenv -F FLOATING_SESSION_NAME 'floating' ;
 			popup -d '#{pane_current_path}' -xC -yC -w70% -h70% -E 'tmux new -A -s $FLOATING_SESSION_NAME'
 		}"
 	done
@@ -51,7 +51,7 @@ set_floating_active_pane_to_scratch() {
 	local key
 	for key in $key_bindings; do
 		tmux bind "$key" "if-shell -F '#{==:#S,floating}' {
-		 select-pane -m 
+		 select-pane -m ;
 		 popup -d '#{pane_current_path}' -xC -yC -w70% -h70% -E 'tmux new -A -s floating tmux join-pane'
 	 }"
 	done
